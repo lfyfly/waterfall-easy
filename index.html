@@ -6,12 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>waterfall-easy</title>
-  <link rel="stylesheet" href="./src/waterfall-easy.css">
-  <script src="./src/waterfall-easy.js"></script>
   <style>
     * {
       margin: 0;
       padding: 0;
+    }
+
+    .waterfall-scroll-container {
+      background: #eee;
+      height: 400px;
     }
 
     .waterfall-card {
@@ -40,50 +43,7 @@
     <div class="waterfall-cards-container"></div>
     <p>加载中...</p>
   </div>
-  <script>
-    var waterfallCardsContainerEl = document.querySelector('.waterfall-cards-container')
-    function insertCards(num, waterfallCardsContainerEl) {
-      waterfallCardsContainerEl.innerHTML += generateCardsEls(generateCardsData(num))
-    }
-    insertCards(10, waterfallCardsContainerEl)
-    // 布局
 
-    var waterfallEasy = new WaterfallEasy({
-      scollToLoadCb() {
-        console.log('滚动触底了')
-        insertCards(10, waterfallCardsContainerEl)
-        waterfallEasy.reWaterfall()
-      }
-    })
-    console.log(waterfallEasy)
-    setTimeout(() => {
-      waterfallEasy.stopLoad()
-      setTimeout(() => {
-        waterfallEasy.scollToLoad()
-      }, 3000)
-    }, 3000)
-
-
-
-    function generateCardsEls(cardsData) {
-      return cardsData.map((cardItem, i) => {
-        var cardStyleStr = cardItem.height ? `height:${cardItem.height}px;` : ''
-        return `<div class="waterfall-card" style="${cardStyleStr}">第${i}张</div>`
-      }).join('')
-    }
-
-    function generateCardsData(num, hasHeightProp = true) {
-      var minHeight = 200
-      var maxHeight = 400
-      var cardsData = []
-      for (var i = 0; i < num; i++) {
-        let randomHeight = minHeight + parseInt(Math.random() * (maxHeight - minHeight))
-        cardsData.push(hasHeightProp ? { height: randomHeight } : {})
-      }
-      return cardsData
-    }
-
-  </script>
 </body>
 
 </html>

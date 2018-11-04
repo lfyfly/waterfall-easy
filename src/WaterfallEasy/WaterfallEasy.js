@@ -1,4 +1,3 @@
-var l = console.log
 class WaterfallEasy {
   constructor(options = {}) {
     var defaultOptions = {
@@ -22,11 +21,20 @@ class WaterfallEasy {
     this.init()
   }
   init() {
+    this.initStyle()
     this.initCols()
     this.colsHeightArr = []
     this.startCardIndex = 0
     this.waterfall()
     this.bindEvent()
+  }
+  initStyle(){
+    this.scrollContainerEl.style['overflow-x'] = 'hidden'
+    this.scrollContainerEl.style['overflow-y'] = 'auto'
+    if(!getComputedStyle(this.scrollContainerEl,null).width) this.scrollContainerEl.style.width = '100%'
+    if(!getComputedStyle(this.scrollContainerEl,null).height) this.scrollContainerEl.style.height = '100%'
+    this.cardsContainerEl.style.position = 'relative'
+    this.cardsContainerEl.style.margin = '0 auto'
   }
   initCols() {
     this.cols = parseInt(window.innerWidth / this.cardWidth)
@@ -39,6 +47,7 @@ class WaterfallEasy {
     // 第一列排列
     if (this.startCardIndex === 0) {
       for (var i = 0; i < this.cols; i++) {
+        cardEls[i].style.position = 'absolute'
         cardEls[i].style.top = 0
         cardEls[i].style.left = this.cardWidth * i + 'px'
         this.colsHeightArr.push(cardEls[i].offsetHeight)
@@ -50,6 +59,7 @@ class WaterfallEasy {
     for (var i = this.startCardIndex; i < cardEls.length; i++) {
       var minHeight = Math.min.apply(null, this.colsHeightArr)
       var minColIndex = this.colsHeightArr.indexOf(minHeight)
+      cardEls[i].style.position = 'absolute'
       cardEls[i].style.top = minHeight + 'px'
       cardEls[i].style.left = this.cardWidth * minColIndex + 'px'
       this.colsHeightArr[minColIndex] = minHeight + cardEls[i].offsetHeight
@@ -92,3 +102,4 @@ class WaterfallEasy {
     this.scrollContainerEl.onscroll = null
   }
 }
+export default WaterfallEasy
