@@ -1,10 +1,13 @@
 var path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
-  mode: 'development',
+  entry: path.resolve(__dirname, 'src/WaterfallEasy/WaterfallEasy.js'),
+  mode:'production',
   output: {
-    filename: 'index.js'
+    path: path.resolve(__dirname, 'lib'),
+    filename: 'WaterfallEasy.js',
+    libraryTarget: 'umd',
+    library: 'WaterfallEasy',
+    libraryExport: "default" // 不设置此项目，那么只能test.default中访问
   },
   module: {
     rules: [
@@ -23,12 +26,5 @@ module.exports = {
         ]
       },
     ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './index.html',
-      filename: 'index.html',
-      inject: true,
-    })
-  ]
+  }
 };

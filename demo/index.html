@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>waterfall-easy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .waterfall-scroll-container {
+      background: #eee;
+      height: 400px;
+    }
+
+    .waterfall-card {
+      border: 20px solid #ccc;
+      width: 250px;
+      animation: show-card .5s;
+      transition: all .5s;
+    }
+
+    @keyframes show-card {
+      0% {
+        transform: scale(0.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>waterfall-easy</h1>
+  <div class="waterfall-scroll-container">
+    <h1>waterfall-easy-header</h1>
+    <div class="waterfall-cards-container"></div>
+    <p>加载中...</p>
+  </div>
+
+<script type="text/javascript" src="index.js"></script></body>
+
+</html>
