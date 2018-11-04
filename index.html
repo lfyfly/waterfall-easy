@@ -11,10 +11,14 @@
       margin: 0;
       padding: 0;
     }
-
+    .header-title{
+      text-align: center;
+      height: 60px;
+      line-height: 60px;
+    }
     .waterfall-scroll-container {
       background: #eee;
-      height: 400px;
+      height: calc(100vh - 60px);
     }
 
     .waterfall-card {
@@ -37,7 +41,7 @@
 
 <body>
 
-  <h1>waterfall-easy</h1>
+  <h1 class="header-title">waterfall-easy</h1>
   <div class="waterfall-scroll-container">
     <h1>waterfall-easy-header</h1>
     <div class="waterfall-cards-container"></div>

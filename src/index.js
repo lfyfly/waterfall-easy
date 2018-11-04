@@ -27,7 +27,7 @@
     function generateCardsEls(cardsData) {
       return cardsData.map(function (cardItem, i) {
         var cardStyleStr = cardItem.height ? 'height:' + cardItem.height + 'px;' : ''
-        return '<div class="waterfall-card" style="' + cardStyleStr + '">第' + '张</div>'
+        return '<div class="waterfall-card" style="' + cardStyleStr + '"></div>'
       }).join('')
     }
 
